@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff7ed;
+  --foreground: #3f2d54;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-fredoka);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.25s ease-out;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float-up 3s ease-in-out infinite;
+}
+
+@keyframes rise-fade {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-rise-fade {
+  animation: rise-fade 0.9s ease-out forwards;
+}
