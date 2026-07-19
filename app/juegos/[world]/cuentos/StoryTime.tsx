@@ -11,7 +11,9 @@ export default function StoryTime({ world }: { world: World }) {
   const [activeStory, setActiveStory] = useState<Story | null>(null);
   const [isNarrating, setIsNarrating] = useState(false);
   const [playbackError, setPlaybackError] = useState(false);
+  const [sceneIndex, setSceneIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const activeStoryRef = useRef<Story | null>(null);
 
   useEffect(() => {
     const audio = new Audio();
@@ -25,6 +27,16 @@ export default function StoryTime({ world }: { world: World }) {
       setIsNarrating(false);
       setPlaybackError(true);
     });
+    audio.addEventListener("timeupdate", () => {
+      const story = activeStoryRef.current;
+      if (!story || !audio.duration || !isFinite(audio.duration)) return;
+      const progress = audio.currentTime / audio.duration;
+      const idx = Math.min(
+        story.scenes.length - 1,
+        Math.floor(progress * story.scenes.length)
+      );
+      setSceneIndex((prev) => (prev === idx ? prev : idx));
+    });
     audioRef.current = audio;
     return () => {
       audio.pause();
@@ -34,6 +46,8 @@ export default function StoryTime({ world }: { world: World }) {
 
   function playStory(story: Story) {
     setActiveStory(story);
+    activeStoryRef.current = story;
+    setSceneIndex(0);
     setPlaybackError(false);
     const audio = audioRef.current;
     if (!audio) return;
@@ -92,17 +106,42 @@ export default function StoryTime({ world }: { world: World }) {
       {activeStory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
           <div className="animate-pop-in flex max-h-[85vh] w-full max-w-sm flex-col items-center gap-3 rounded-[2.5rem] bg-white px-6 py-6 text-center shadow-2xl">
-            <div
-              className={`relative h-28 w-28 shrink-0 overflow-hidden rounded-[1.5rem] shadow-lg ${
-                isNarrating ? "animate-wiggle" : ""
-              }`}
-            >
-              <Image
-                src={activeStory.image}
-                alt={activeStory.title}
-                fill
-                className="object-cover"
-              />
+            <div className="relative h-36 w-36 shrink-0">
+              <div
+                key={sceneIndex}
+                className="animate-pop-in absolute inset-0 overflow-hidden rounded-[1.5rem] shadow-lg"
+              >
+                <Image
+                  src={activeStory.scenes[sceneIndex] ?? activeStory.image}
+                  alt={activeStory.title}
+                  fill
+                  className={`object-cover ${
+                    isNarrating ? "animate-ken-burns" : ""
+                  }`}
+                />
+              </div>
+              {isNarrating && (
+                <>
+                  <span
+                    className="pointer-events-none absolute -top-2 -left-2 animate-sparkle text-xl"
+                    style={{ animationDelay: "0s" }}
+                  >
+                    ✨
+                  </span>
+                  <span
+                    className="pointer-events-none absolute top-3 -right-3 animate-sparkle text-lg"
+                    style={{ animationDelay: "0.7s" }}
+                  >
+                    ✨
+                  </span>
+                  <span
+                    className="pointer-events-none absolute -bottom-2 left-1/3 animate-sparkle text-lg"
+                    style={{ animationDelay: "1.4s" }}
+                  >
+                    ✨
+                  </span>
+                </>
+              )}
             </div>
             <h2 className="shrink-0 text-xl font-bold text-violet-700">
               {activeStory.title}

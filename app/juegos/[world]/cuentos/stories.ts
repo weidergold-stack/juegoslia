@@ -2,6 +2,7 @@ export type Story = {
   id: string;
   title: string;
   image: string;
+  scenes: string[];
   text: string;
   audio: string;
 };
@@ -11,6 +12,12 @@ export const STORIES: Story[] = [
     id: "cami-tesoro",
     title: "Cami y el Tesoro del Jardín",
     image: "/characters/cami-color.jpg",
+    scenes: [
+      "/characters/cami-color.jpg",
+      "/characters/cami-tesoro-2.jpg",
+      "/characters/cami-tesoro-3.jpg",
+      "/characters/cami-tesoro-4.jpg",
+    ],
     audio: "/stories/cami-tesoro.mp3",
     text: `Había una vez, en una casa con un jardín muy grande y lleno de flores de todos los colores, una perrita muy curiosa llamada Cami. Cami tenía el pelaje azul turquesa y una colita que nunca dejaba de moverse, porque siempre estaba feliz y lista para una aventura.
 
@@ -48,6 +55,12 @@ Fin.`,
     id: "estrellas-cancion",
     title: "Las Estrellas y la Canción Mágica",
     image: "/characters/estrellas-color.jpg",
+    scenes: [
+      "/characters/estrellas-color.jpg",
+      "/characters/estrellas-cancion-2.jpg",
+      "/characters/estrellas-cancion-3.jpg",
+      "/characters/estrellas-cancion-4.jpg",
+    ],
     audio: "/stories/estrellas-cancion.mp3",
     text: `Había una vez tres amigas inseparables: Las Estrellas Valientes. Vivían en un pueblito mágico donde, cada noche, el cielo se llenaba de miles de estrellas brillantes. Las tres amigas tenían un don muy especial: cuando cantaban juntas, sus voces brillaban tanto como las estrellas del cielo.
 
@@ -87,6 +100,12 @@ Fin.`,
     id: "tito-colores",
     title: "Tito Descubre los Colores",
     image: "/characters/tito-color.jpg",
+    scenes: [
+      "/characters/tito-color.jpg",
+      "/characters/tito-colores-2.jpg",
+      "/characters/tito-colores-3.jpg",
+      "/characters/tito-colores-4.jpg",
+    ],
     audio: "/stories/tito-colores.mp3",
     text: `Era una tarde tranquila, y Tito, el bebé más curioso del mundo, estaba sentado en el piso de su cuarto, rodeado de sus bloques de construcción favoritos. Había bloques de todos los colores: rojos, azules, amarillos, verdes y morados.
 
@@ -134,6 +153,12 @@ Fin.`,
     id: "fiesta-amigos",
     title: "La Fiesta de los Tres Amigos",
     image: "/characters/fiesta-amigos.jpg",
+    scenes: [
+      "/characters/fiesta-amigos.jpg",
+      "/characters/fiesta-amigos-2.jpg",
+      "/characters/fiesta-amigos-3.jpg",
+      "/characters/fiesta-amigos-4.jpg",
+    ],
     audio: "/stories/fiesta-amigos.mp3",
     text: `Un día, Cami la perrita, las tres Estrellas Valientes, y Tito el bebé curioso se reunieron en el parque más bonito del pueblo. Tenían un plan muy especial: iban a organizar la fiesta más divertida que nadie hubiera visto jamás.
 
@@ -173,6 +198,12 @@ Fin.`,
     id: "lia-berlin",
     title: "Lia y su Gato Berlín",
     image: "/characters/lia-berlin.jpg",
+    scenes: [
+      "/characters/lia-berlin.jpg",
+      "/characters/lia-berlin-2.jpg",
+      "/characters/lia-berlin-3.jpg",
+      "/characters/lia-berlin-4.jpg",
+    ],
     audio: "/stories/lia-berlin.mp3",
     text: `Había una vez una niña hermosa de tres años llamada Lia, que tenía una sonrisa que iluminaba toda la casa. Lia vivía con su mamá Yicel, su papá Weider, y su gato gris llamado Berlín, que la seguía a todas partes como su mejor amigo.
 
