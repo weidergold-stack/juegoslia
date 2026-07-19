@@ -189,6 +189,30 @@ function buildTree(
   return tree;
 }
 
+function buildCone(
+  coneGeo: THREE.ConeGeometry,
+  coneMat: THREE.Material,
+  stripeGeo: THREE.CylinderGeometry,
+  stripeMat: THREE.Material,
+  baseGeo: THREE.BoxGeometry
+) {
+  const group = new THREE.Group();
+  const cone = new THREE.Mesh(coneGeo, coneMat);
+  cone.position.y = 0.375;
+  cone.castShadow = true;
+  group.add(cone);
+
+  const stripe = new THREE.Mesh(stripeGeo, stripeMat);
+  stripe.position.y = 0.45;
+  group.add(stripe);
+
+  const base = new THREE.Mesh(baseGeo, coneMat);
+  base.position.y = 0.04;
+  group.add(base);
+
+  return group;
+}
+
 function buildStarfield(spread: number, centerZ: number) {
   const count = 160;
   const positions = new Float32Array(count * 3);
@@ -356,6 +380,22 @@ export default function RaceScene({
       stars.push({ mesh, lane, z, collected: false });
     }
 
+    const OBSTACLE_COUNT = Math.max(6, Math.round(TRACK_LENGTH / 90));
+    const coneGeo = new THREE.ConeGeometry(0.32, 0.75, 10);
+    const coneMat = new THREE.MeshStandardMaterial({ color: "#ff7a1a", roughness: 0.6 });
+    const stripeGeo = new THREE.CylinderGeometry(0.26, 0.29, 0.12, 10);
+    const stripeMat = new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 0.6 });
+    const baseGeo = new THREE.BoxGeometry(0.5, 0.08, 0.5);
+    const obstacles: { mesh: THREE.Group; lane: number; z: number; hit: boolean }[] = [];
+    for (let i = 0; i < OBSTACLE_COUNT; i++) {
+      const lane = Math.floor(Math.random() * 3);
+      const z = -30 - i * (TRACK_LENGTH / OBSTACLE_COUNT) + (Math.random() * 6 - 3);
+      const mesh = buildCone(coneGeo, coneMat, stripeGeo, stripeMat, baseGeo);
+      mesh.position.set(LANES[lane], 0, z);
+      scene.add(mesh);
+      obstacles.push({ mesh, lane, z, hit: false });
+    }
+
     const gatePoleMat = new THREE.MeshStandardMaterial({ color: "#e5e7eb" });
     for (const x of [-3.6, 3.6]) {
       const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 5, 10), gatePoleMat);
@@ -389,7 +429,14 @@ export default function RaceScene({
       const mesh = buildCar(r.color, false);
       mesh.position.set(LANES[r.lane], 0, r.startZ);
       scene.add(mesh);
-      return { mesh, speed: SPEED * r.speedFactor, wasBlocking: false };
+      return {
+        mesh,
+        baseSpeed: SPEED * r.speedFactor,
+        wasBlocking: false,
+        slowTimer: 0,
+        wobblePhase: Math.random() * Math.PI * 2,
+        wobbleFreq: 0.15 + Math.random() * 0.25,
+      };
     });
 
     const engineSound = createEngineSound(SPEED);
@@ -402,6 +449,7 @@ export default function RaceScene({
 
     let shakeTime = 0;
     let flashIntensity = 0;
+    let playerSlowTimer = 0;
 
     const clock = new THREE.Clock();
     let finished = false;
@@ -458,18 +506,52 @@ export default function RaceScene({
     }
 
     function updateFrame(delta: number) {
+      if (playerSlowTimer > 0) playerSlowTimer = Math.max(0, playerSlowTimer - delta);
+      const playerSpeedFactor = playerSlowTimer > 0 ? 0.45 : 1;
+
       if (!finished) {
-        car.position.z -= SPEED * delta;
+        car.position.z -= SPEED * playerSpeedFactor * delta;
       }
-      spinWheels(car, SPEED, delta);
+      spinWheels(car, SPEED * playerSpeedFactor, delta);
 
       for (const rival of rivals) {
+        if (rival.slowTimer > 0) rival.slowTimer = Math.max(0, rival.slowTimer - delta);
+        const wobble = 1 + Math.sin(clock.elapsedTime * rival.wobbleFreq + rival.wobblePhase) * 0.06;
+        const slowFactor = rival.slowTimer > 0 ? 0.45 : 1;
+        const effSpeed = rival.baseSpeed * wobble * slowFactor;
         if (rival.mesh.position.z > -TRACK_LENGTH) {
           rival.mesh.position.z = Math.max(
-            rival.mesh.position.z - rival.speed * delta,
+            rival.mesh.position.z - effSpeed * delta,
             -TRACK_LENGTH
           );
-          spinWheels(rival.mesh, rival.speed, delta);
+          spinWheels(rival.mesh, effSpeed, delta);
+        }
+      }
+
+      for (const obstacle of obstacles) {
+        if (obstacle.hit) continue;
+        const dz = Math.abs(obstacle.z - car.position.z);
+        const dxo = Math.abs(LANES[obstacle.lane] - car.position.x);
+        if (dz < 1.3 && dxo < 1.0) {
+          obstacle.hit = true;
+          obstacle.mesh.rotation.z = Math.PI / 2.2;
+          obstacle.mesh.position.y = -0.05;
+          playerSlowTimer = 0.6;
+          engineSound.bump();
+          shakeTime = 0.2;
+          flashIntensity = 0.35;
+          continue;
+        }
+        for (const rival of rivals) {
+          const rdz = Math.abs(obstacle.z - rival.mesh.position.z);
+          const rdx = Math.abs(LANES[obstacle.lane] - rival.mesh.position.x);
+          if (rdz < 1.3 && rdx < 1.0) {
+            obstacle.hit = true;
+            obstacle.mesh.rotation.z = Math.PI / 2.2;
+            obstacle.mesh.position.y = -0.05;
+            rival.slowTimer = 0.7 + Math.random() * 0.4;
+            break;
+          }
         }
       }
 

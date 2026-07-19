@@ -24,8 +24,8 @@ export const LEVELS: LevelTheme[] = [
     grassTint: "#ffffff",
     roadTint: "#ffffff",
     foliageColors: ["#2f8f46", "#3aa657"],
-    trackLength: 700,
-    speed: 24,
+    trackLength: 1050,
+    speed: 26,
   },
   {
     name: "Desierto Dorado",
@@ -37,8 +37,8 @@ export const LEVELS: LevelTheme[] = [
     grassTint: "#e3ac66",
     roadTint: "#ffdba8",
     foliageColors: ["#c98a3a", "#dba24f"],
-    trackLength: 850,
-    speed: 27,
+    trackLength: 1300,
+    speed: 29,
   },
   {
     name: "Noche de Estrellas",
@@ -50,8 +50,8 @@ export const LEVELS: LevelTheme[] = [
     grassTint: "#25415a",
     roadTint: "#8fa0d8",
     foliageColors: ["#1f5c38", "#245f3d"],
-    trackLength: 1000,
-    speed: 30,
+    trackLength: 1550,
+    speed: 32,
     night: true,
   },
 ];
