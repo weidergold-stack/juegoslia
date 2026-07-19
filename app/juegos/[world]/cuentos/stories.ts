@@ -251,4 +251,63 @@ Esa noche, mientras Berlín dormía a los pies de su cama, Lia cerró sus ojitos
 
 Fin.`,
   },
+  {
+    id: "lia-jardin",
+    title: "Lia y la Canción del Jardín",
+    image: "/characters/lia-jardin.jpg",
+    scenes: [
+      "/characters/lia-jardin.jpg",
+      "/characters/lia-jardin-2.jpg",
+      "/characters/lia-jardin-3.jpg",
+      "/characters/lia-jardin-4.jpg",
+    ],
+    audio: "/stories/lia-jardin.mp3",
+    text: `Era muy temprano en la mañana, y el sol apenas empezaba a asomarse por la ventana de la cocina. Mamá Yicel, con una sonrisa dulce, ya estaba despierta preparando un desayuno delicioso: arepas calientitas y jugo de naranja fresco, especial para su princesa Lia.
+
+Mientras las arepas se doraban poquito a poquito, Mamá Yicel caminó de puntitas hasta el cuarto de Lia. Ahí estaba su niña hermosa, dormida como un angelito, abrazada a su almohada favorita.
+
+Buenos días, mi amor, es hora de despertar, le dijo Mamá Yicel con voz suavecita, dándole besitos en la frente.
+
+Lia abrió sus ojitos poco a poco y estiró los bracitos con un gran bostezo. Mmm, cinco minutitos más, mami, dijo entre risas, escondiéndose bajo las cobijas.
+
+Pero Mamá Yicel la abrazó y, entre cosquillas y risas, le quitó despacito su pijama para llevarla a bañar. Vamos a darte un baño calentito para que despiertes bien contenta, le dijo.
+
+En el baño, el agua tibia hacía burbujas por todas partes. Lia chapoteaba feliz, salpicando agua para todos lados mientras Mamá Yicel le lavaba el cabello con mucho cuidado.
+
+¡Mira, mami, hice una montaña de burbujas!, dijo Lia, riéndose y poniéndose burbujas como sombrero en la cabeza.
+
+Qué bonita te ves, mi reina, dijo Mamá Yicel riendo también, mientras la envolvía en una toalla suave y calientita.
+
+Después del baño, Lia se puso su ropa favorita para ir al jardín, y corrió a la cocina, donde la esperaba su desayuno. Se sentó a la mesa y empezó a comer sus arepas calientitas con mucha hambre.
+
+Mmm, están deliciosas, mami, dijo Lia con la boca llena, sonriendo.
+
+Justo en ese momento, Lia miró hacia el cuarto de sus papás y vio la puerta entreabierta. Ahí estaba Papá Weider, todavía profundamente dormido, roncando bajito debajo de las cobijas, sin ninguna prisa por levantarse.
+
+¡Papi sigue dormidote!, dijo Lia riéndose bajito para no despertarlo.
+
+Déjalo descansar un poquito más, dijo Mamá Yicel guiñándole un ojo. Nosotras tenemos una aventura esperándonos.
+
+Cuando Lia terminó su desayuno, tomó su mochila y salió de la casa agarrada de la mano de su mamá. Subieron juntas al carro, y Mamá Yicel encendió el motor.
+
+¿Lista para ir al jardín?, preguntó Mamá Yicel sonriendo por el espejo retrovisor.
+
+¡Sííí!, gritó Lia emocionada, aplaudiendo con sus manitas.
+
+Y mientras el carro avanzaba por las calles llenas de sol, Lia y su mamá empezaron a cantar juntas, muy fuerte y muy felices:
+
+Ya vamos a llegar, ya vamos a llegar, al jardín ya vamos a llegar, y vamos a estudiar, y vamos a estudiar, y con los niños vamos a jugar.
+
+Cantaron la canción una y otra vez, riéndose y moviendo las manitas al ritmo de la música. Lia miraba por la ventana cómo pasaban las casas, los árboles y los otros carros, mientras el sol brillaba cada vez más fuerte en el cielo azul.
+
+Cuando por fin llegaron al jardín, Lia bajó del carro con una gran sonrisa, lista para aprender cosas nuevas y jugar con sus amiguitos.
+
+Gracias por esta mañana tan divertida, mami, dijo Lia, dándole un beso muy grande.
+
+Gracias a ti, mi amor, por empezar el día siempre con una sonrisa, respondió Mamá Yicel, abrazándola fuerte antes de despedirse.
+
+Y así, Lia entró al jardín feliz y llena de energía, lista para vivir un día lleno de aventuras, sabiendo que, sin importar cuán ocupada estuviera la mañana, siempre habría tiempo para reír, cantar y disfrutar cada momento junto a las personas que más quería.
+
+Fin.`,
+  },
 ];
