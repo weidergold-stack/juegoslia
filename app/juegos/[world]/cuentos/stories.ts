@@ -310,4 +310,294 @@ Y así, Lia entró al jardín feliz y llena de energía, lista para vivir un dí
 
 Fin.`,
   },
+  {
+    id: "cami-lluvia",
+    title: "Cami y el Día de Lluvia",
+    image: "/characters/cami-lluvia.jpg",
+    scenes: [
+      "/characters/cami-lluvia.jpg",
+      "/characters/cami-lluvia-2.jpg",
+      "/characters/cami-lluvia-3.jpg",
+      "/characters/cami-lluvia-4.jpg",
+    ],
+    audio: "/stories/cami-lluvia.mp3",
+    text: `Era una mañana gris, y gruesas nubes cubrían todo el cielo. Cami, la perrita turquesa más curiosa del vecindario, miraba por la ventana con la naricita pegada al vidrio.
+
+Qué raro se ve el cielo hoy, pensó Cami, viendo cómo las primeras gotas de lluvia empezaban a caer.
+
+¡Plas, plas, plas! El sonido de la lluvia sobre el tejado la hizo saltar de la emoción. Nunca había visto llover tanto.
+
+¿Puedo salir a jugar?, preguntó Cami, moviendo la cola sin parar.
+
+Claro que sí, pero ponte tu impermeable amarillo, le dijeron, sonriendo.
+
+Cami salió corriendo al jardín, y lo primero que vio fue un enorme charco de agua justo en medio del camino. Sin pensarlo dos veces, saltó adentro con las cuatro patitas.
+
+¡Splash! El agua salpicó por todos lados, y Cami se rió a carcajadas. Saltar en charcos era la cosa más divertida del mundo.
+
+Siguió saltando de charco en charco, cada uno más grande que el anterior, hasta que escuchó un sonidito extraño cerca del árbol grande del jardín. Miau... miau...
+
+Cami se acercó despacito y encontró a un gatito pequeño y asustado, empapado y temblando bajo unas hojas.
+
+Hola, amiguito, ¿estás perdido?, preguntó Cami con dulzura.
+
+El gatito, muy asustado, no podía moverse. Tenía mucho miedo de la lluvia y del trueno que había sonado hacía un momento.
+
+No te preocupes, yo te voy a ayudar, dijo Cami. Con mucho cuidado, tomó al gatito con su hocico y lo llevó corriendo hasta el porche de la casa, donde el techo los protegía de la lluvia.
+
+Ahí estarás seco y calientito, le dijo Cami, acomodándose a su lado para hacerle compañía.
+
+Poco a poco, el gatito dejó de temblar. Gracias por ayudarme, dijo con una vocecita tímida. Tenía mucho miedo de la tormenta.
+
+A veces las tormentas dan un poquito de miedo, pero también pueden ser muy divertidas si las vemos desde un lugar seguro, dijo Cami, sonriendo.
+
+Los dos se quedaron juntos en el porche, viendo caer la lluvia y escuchando el sonido relajante de las gotas golpeando el techo. Cami le contó al gatito sobre lo divertido que era saltar en los charcos, y poco a poco, el gatito empezó a sonreír también.
+
+Cuando la lluvia por fin paró, salió un arcoíris enorme en el cielo, con todos los colores brillando después de la tormenta.
+
+¡Mira qué bonito!, dijo Cami, señalando con su patita.
+
+El gatito, ya sin miedo, se acurrucó junto a Cami y le dijo: ¿Podemos ser amigos?
+
+Claro que sí, respondió Cami feliz. Y desde ese día, cada vez que llovía, Cami y su nuevo amigo gatito se sentaban juntos en el porche a ver caer la lluvia, sabiendo que ya no había nada que temer cuando se tiene un buen amigo al lado.
+
+Cami aprendió que los días grises también pueden traer las cosas más lindas, como un nuevo amigo y un hermoso arcoíris al final.
+
+Fin.`,
+  },
+  {
+    id: "cami-compartir",
+    title: "Cami Aprende a Compartir",
+    image: "/characters/cami-compartir.jpg",
+    scenes: [
+      "/characters/cami-compartir.jpg",
+      "/characters/cami-compartir-2.jpg",
+      "/characters/cami-compartir-3.jpg",
+      "/characters/cami-compartir-4.jpg",
+    ],
+    audio: "/stories/cami-compartir.mp3",
+    text: `Era un día soleado y Cami estaba en el parque con su juguete favorito: una pelota roja brillante que le habían regalado para su cumpleaños. Le encantaba morderla, lanzarla al aire y perseguirla corriendo por todo el jardín.
+
+Mientras jugaba feliz, vio llegar a un nuevo perrito al parque. Era pequeño, de color café, y se llamaba Toby. Toby miraba a Cami jugar con la pelota roja, con ojitos llenos de curiosidad, pero no se atrevía a acercarse.
+
+Cami notó cómo Toby la observaba, pero por un momento pensó: Esta pelota es mía, no quiero prestarla, no vaya a ser que se rompa o se pierda.
+
+Siguió jugando sola un ratito más, lanzando la pelota bien lejos y corriendo a buscarla. Pero algo raro pasó: jugar sola, sin nadie más, ya no le parecía tan divertido como antes.
+
+Cami miró a Toby, que seguía sentadito debajo de un árbol, mirando con tristeza cómo los demás perritos jugaban en grupo, sin animarse a unirse a nadie.
+
+Cami se quedó pensando un momentito. Recordó que las mejores aventuras siempre eran más divertidas cuando las compartía con sus amigos.
+
+Con la pelota en el hocico, caminó despacito hacia Toby.
+
+Hola, me llamo Cami. ¿Quieres jugar conmigo?, le preguntó, dejando la pelota roja en el suelo entre los dos.
+
+Los ojitos de Toby se iluminaron de alegría. ¿De verdad? ¡Me encantaría!, respondió moviendo la colita rapidísimo.
+
+Cami empujó la pelota hacia él con la patita, y Toby, emocionado, la atrapó y salió corriendo. Cami lo persiguió riendo, y por primera vez en el día, sintió que jugar era mucho, mucho más divertido con un amigo al lado.
+
+Se turnaron para lanzar la pelota, para atraparla, y hasta inventaron un juego nuevo en el que tenían que hacerla rodar entre los dos sin que se les escapara. Se rieron tanto que ni se dieron cuenta de que ya había pasado toda la tarde jugando juntos.
+
+Cuando el sol empezó a esconderse, Cami y Toby se sentaron juntos, cansados pero felices, con la pelota roja entre las dos patitas de cada uno.
+
+Gracias por compartir tu pelota conmigo, dijo Toby sonriendo. Fue el mejor día que he tenido en el parque.
+
+Gracias a ti por jugar conmigo, respondió Cami. Aprendí que un juguete compartido se disfruta el doble.
+
+Desde ese día, Cami y Toby se hicieron mejores amigos, y cada vez que iban al parque, llevaban la pelota roja para jugar juntos, recordando siempre que compartir hace que todo sea mucho más divertido.
+
+Fin.`,
+  },
+  {
+    id: "estrellas-cometa",
+    title: "Las Estrellas y la Cometa Voladora",
+    image: "/characters/estrellas-cometa.jpg",
+    scenes: [
+      "/characters/estrellas-cometa.jpg",
+      "/characters/estrellas-cometa-2.jpg",
+      "/characters/estrellas-cometa-3.jpg",
+      "/characters/estrellas-cometa-4.jpg",
+    ],
+    audio: "/stories/estrellas-cometa.mp3",
+    text: `Era una tarde de mucho viento, perfecta para volar cometas. Las tres amigas inseparables, Las Estrellas Valientes, habían decidido construir su propia cometa para el gran festival de cometas que se celebraba esa semana en el pueblo.
+
+Vamos a hacer la cometa más bonita de todo el festival, dijo la amiga de la cinta amarilla, sacando papel de colores, palitos de madera y mucho pegamento.
+
+Las tres se sentaron en el jardín y empezaron a trabajar juntas. La amiga de la cinta rosada cortaba el papel con mucho cuidado, la amiga de la cinta morada armaba el esqueleto de palitos, y la amiga de la cinta amarilla pintaba estrellas doradas por toda la cometa.
+
+Pero armar una cometa no era tan fácil como pensaban. La primera vez que la armaron, el papel se rompió. La segunda vez, los palitos no quedaron derechos. Y la tercera vez, ¡se les enredó todo el hilo!
+
+Esto es más difícil de lo que pensé, dijo la amiga de la cinta morada, un poco frustrada.
+
+Sus amigas se sentaron a su lado y la abrazaron. No te preocupes, las cosas bonitas a veces toman su tiempo. Vamos a intentarlo una vez más, juntas, le dijeron.
+
+Con mucha paciencia, empezaron de nuevo. Esta vez, cada una se encargó de una parte diferente: una sostenía los palitos con firmeza, otra pegaba el papel con cuidado, y la última enrollaba el hilo sin que se enredara. Trabajando en equipo, la cometa poco a poco fue tomando forma, hasta que quedó lista: brillante, colorida, y con una larga cola de cintas de todos los colores.
+
+¡Lo logramos!, gritaron las tres, abrazándose felices.
+
+Corrieron al campo abierto donde soplaba el viento más fuerte, y entre las tres sostuvieron la cometa en alto.
+
+¡Uno, dos, tres... corran!, gritó una de ellas.
+
+Corrieron juntas sosteniendo el hilo, y de repente, el viento levantó la cometa muy, muy alto en el cielo. Subió y subió, bailando entre las nubes, con su cola de colores ondeando como un arcoíris.
+
+¡Miren qué alto llegó!, gritaron emocionadas, saltando de alegría.
+
+Todos los demás niños del festival se acercaron a admirar la hermosa cometa de estrellas doradas volando más alto que todas las demás. Las tres amigas se turnaron para sostener el hilo, sintiendo cómo el viento tiraba con fuerza, cada una más feliz que la anterior.
+
+Cuando por fin bajaron la cometa, al final del día, se sentaron juntas en el pasto a descansar, mirando el cielo pintado de naranja por el atardecer.
+
+Casi se nos rompe muchas veces, pero no nos rendimos, dijo una de las Estrellas.
+
+Y por eso volamos más alto que nadie, dijo otra, sonriendo.
+
+Esa noche, las tres amigas entendieron que las cosas más bonitas de la vida a veces requieren paciencia, trabajo en equipo, y muchos intentos, pero que al final, siempre vale la pena.
+
+Fin.`,
+  },
+  {
+    id: "estrellas-amiga",
+    title: "Las Estrellas Ayudan a una Amiga",
+    image: "/characters/estrellas-amiga.jpg",
+    scenes: [
+      "/characters/estrellas-amiga.jpg",
+      "/characters/estrellas-amiga-2.jpg",
+      "/characters/estrellas-amiga-3.jpg",
+      "/characters/estrellas-amiga-4.jpg",
+    ],
+    audio: "/stories/estrellas-amiga.mp3",
+    text: `Era el primer día de clases después de las vacaciones, y todo el salón estaba lleno de risas y saludos entre amigos que se habían extrañado. Las tres Estrellas Valientes entraron juntas, como siempre, tomadas de la mano y muy emocionadas de empezar el nuevo año.
+
+Pero en una esquina del salón, sentada solita, había una niña nueva que nadie conocía. Tenía el cabello recogido en una trenza y miraba hacia abajo, jugando nerviosamente con sus manitas.
+
+¿Viste a esa niña?, le susurró la amiga de la cinta rosada a sus amigas. Parece que está muy solita.
+
+Las tres se miraron y, sin decir una palabra más, supieron exactamente qué hacer. Caminaron juntas hacia la niña nueva y se sentaron a su lado.
+
+Hola, yo soy Estrella, dijo la amiga de la cinta amarilla, sonriendo. Bueno, en realidad todas nos llamamos distinto, ¡pero juntas somos las Estrellas Valientes!
+
+La niña nueva las miró sorprendida y, con vocecita tímida, respondió: Hola... yo me llamo Sofía. Es mi primer día aquí y no conozco a nadie.
+
+¡Ahora nos conoces a nosotras!, dijo la amiga de la cinta morada, sentándose más cerca. ¿Quieres sentarte con nosotras en el recreo?
+
+Los ojitos de Sofía se iluminaron de alegría, aunque todavía se veía un poquito nerviosa. Está bien... gracias, dijo con una pequeña sonrisa.
+
+Durante el recreo, las tres amigas le enseñaron a Sofía todos los juegos favoritos del patio: saltar la cuerda, jugar a las escondidas, y hasta le enseñaron un pedacito de su canción favorita para cantar todas juntas.
+
+Al principio, Sofía cantaba muy bajito, casi en susurros, con un poco de miedo de equivocarse. Pero las tres Estrellas la animaron, cantando fuerte a su lado, tal como lo habían hecho una vez por una de ellas cuando tenía miedo de cantar sola.
+
+No te preocupes si te equivocas, nosotras cantamos contigo, le dijeron.
+
+Poco a poco, la voz de Sofía se hizo más fuerte y segura, y para el final del recreo, las cuatro niñas cantaban y reían juntas como si se conocieran de toda la vida.
+
+Cuando sonó la campana para volver a clase, Sofía abrazó a las tres amigas con una gran sonrisa. Gracias por ser tan lindas conmigo. Pensé que este día iba a ser el más triste de mi vida, pero ha sido uno de los más felices.
+
+Para eso están las amigas, dijo la amiga de la cinta rosada. Nadie debería sentirse solo.
+
+Desde ese día, Sofía se convirtió en la cuarta integrante de las aventuras de Las Estrellas Valientes, y las cuatro juntas aprendieron que un poquito de amabilidad puede convertir el día más solitario en el comienzo de una gran amistad.
+
+Fin.`,
+  },
+  {
+    id: "tito-granja",
+    title: "Tito y los Animales de la Granja",
+    image: "/characters/tito-granja.jpg",
+    scenes: [
+      "/characters/tito-granja.jpg",
+      "/characters/tito-granja-2.jpg",
+      "/characters/tito-granja-3.jpg",
+      "/characters/tito-granja-4.jpg",
+    ],
+    audio: "/stories/tito-granja.mp3",
+    text: `Era un día muy especial para Tito, el bebé más curioso del mundo: ¡su familia lo llevaba a conocer una granja por primera vez!
+
+Desde el carro, Tito ya podía ver los campos verdes y enormes, y su corazoncito se llenaba de emoción cada vez que algo nuevo aparecía por la ventana.
+
+Cuando por fin llegaron, lo primero que escucharon fue un fuerte Muuu que venía del establo. Tito abrió los ojitos como platos.
+
+¿Qué es eso?, preguntó señalando hacia el sonido.
+
+Es una vaca, mi amor. Ella dice Muuu, le explicó su mamá, cargándolo en brazos para acercarse despacito.
+
+Tito miró a la vaca con mucha curiosidad. Era enorme, con manchas blancas y negras, y masticaba pasto muy tranquilamente.
+
+¡Muu, muu!, repitió Tito, tratando de imitar el sonido, lo que hizo reír a toda su familia.
+
+Siguieron caminando por la granja y de pronto escucharon un Oink, oink que venía de un corral cercano. Ahí estaba un cerdito rosado, revolcándose feliz en el barro.
+
+Ese es un cerdito, y hace Oink, oink, le dijo su papá, sonriendo.
+
+¡Oin, oin!, intentó decir Tito, aplaudiendo sus propias manitas de la emoción.
+
+Más adelante, escucharon un Quiquiriquí muy fuerte que venía de arriba de una cerca de madera. Un gallo con plumas de colores brillantes movía su cabeza de un lado a otro.
+
+Ese es un gallo. Él canta muy fuerte en las mañanas para despertar a todos, le explicaron.
+
+Tito se rió a carcajadas al escuchar el sonido tan chistoso, e intentó repetirlo también, aunque le salió más como Qui, qui.
+
+Después, se acercaron a un pequeño estanque donde varios patitos amarillos nadaban felices, haciendo Cuac, cuac mientras chapoteaban en el agua. Tito estiró sus bracitos hacia ellos, encantado con lo esponjositos y amarillos que se veían.
+
+¡Cua, cua!, dijo Tito, riéndose sin parar.
+
+Al final del recorrido, la familia se sentó en el pasto a descansar, y Tito, muy pensativo, empezó a repasar todos los sonidos que había aprendido: Muu, como la vaca. Oin, oin, como el cerdito. Qui, qui, como el gallo. Y cua, cua, como los patitos.
+
+Su mamá lo abrazó fuerte y le dio un beso en la cabecita. Aprendiste muchísimo hoy, mi amor. ¿Cuál fue tu animal favorito?
+
+Tito lo pensó un momentito, mirando hacia el estanque donde los patitos seguían nadando, y sonrió muy grande.
+
+¡Cua, cua!, dijo, señalando hacia ellos con su dedito.
+
+Esa noche, mientras se quedaba dormido, Tito seguía murmurando bajito los sonidos de todos los animales que había conocido, feliz de haber aprendido tantas cosas nuevas en un solo día, y soñando con la próxima aventura que lo esperaba.
+
+Fin.`,
+  },
+  {
+    id: "tito-noche",
+    title: "Tito le Tiene Miedo a la Noche",
+    image: "/characters/tito-noche.jpg",
+    scenes: [
+      "/characters/tito-noche.jpg",
+      "/characters/tito-noche-2.jpg",
+      "/characters/tito-noche-3.jpg",
+      "/characters/tito-noche-4.jpg",
+    ],
+    audio: "/stories/tito-noche.mp3",
+    text: `Era la hora de dormir, y como cada noche, Tito estaba en su cuarto listo para ir a la cama. Su mamá le había leído un cuento, le había dado un beso de buenas noches, y había apagado la luz grande del cuarto.
+
+Pero esa noche, algo era diferente. Afuera soplaba un viento fuerte que hacía crujir las ramas de un árbol contra la ventana, y las sombras en la pared se veían un poquito raras.
+
+Tito, sentadito en su cunita, miró hacia la ventana y sintió un nudito en la pancita. Las sombras se movían de un lado a otro, y por primera vez, la oscuridad de su cuarto le pareció un poco asustadora.
+
+Mamá... mamá..., llamó Tito con vocecita temblorosa.
+
+Su mamá llegó corriendo enseguida y lo cargó en sus brazos. ¿Qué pasó, mi amor?
+
+Tito señaló hacia la ventana, hacia las sombras que se movían en la pared. Miedo, dijo con su vocecita pequeñita, abrazándose fuerte a su mamá.
+
+Su mamá lo abrazó con mucho cariño y se sentó con él junto a la ventana. Ven, vamos a ver juntos qué es lo que hace esas sombras, le dijo con voz tranquila.
+
+Encendió una lamparita suave, y le mostró a Tito que las sombras raras eran solo las ramas del árbol de afuera, moviéndose con el viento.
+
+¿Ves? Es solo el árbol que dice hola con sus ramitas cuando sopla el viento. No hay nada de qué tener miedo, le explicó, dándole besitos en la frente.
+
+Tito miró de nuevo hacia la ventana, esta vez con más calma, y poquito a poquito, el nudito en su pancita empezó a desaparecer.
+
+Su papá entró también al cuarto, trayendo el peluche favorito de Tito: un osito suave de color café.
+
+Este osito valiente se va a quedar contigo toda la noche para cuidarte, le dijo, poniendo al osito entre sus bracitos.
+
+Su mamá encendió una lucecita pequeñita en forma de estrella, que le daba al cuarto un brillo suave y calientito, como si un pedacito de cielo estuviera dentro de la habitación.
+
+Cuando sientas miedo en la noche, recuerda que mamá y papá siempre estamos cerquita, y que esta lucecita va a cuidarte hasta que salga el sol, le dijo su mamá, arropándolo bien calientito.
+
+Tito, ya mucho más tranquilo, abrazó fuerte a su osito y miró la lucecita en forma de estrella brillar suavemente en la oscuridad.
+
+Ya no miedo, dijo Tito, sonriendo despacito, y cerrando sus ojitos con mucha calma.
+
+Sus papás le dieron un último beso de buenas noches y salieron despacito del cuarto, dejando la puerta un poquito abierta y la lucecita encendida.
+
+Esa noche, Tito aprendió que sentir un poquito de miedo a veces es normal, y que siempre hay alguien cerca, como mamá, papá, un peluche querido, o una lucecita suave, para ayudarnos a sentirnos seguros y tranquilos otra vez.
+
+Fin.`,
+  },
 ];
