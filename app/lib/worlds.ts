@@ -65,7 +65,10 @@ export type GameId =
   | "contar"
   | "carrera"
   | "mascota"
-  | "cuentos";
+  | "cuentos"
+  | "vestir"
+  | "belleza"
+  | "baile";
 
 export type Game = {
   id: GameId;
@@ -124,5 +127,26 @@ export const GAMES: Game[] = [
     emoji: "📖",
     description: "Toca la imagen y escucha el cuento",
     gradient: "from-violet-300 to-purple-400",
+  },
+  {
+    id: "vestir",
+    name: "Vestir a las Estrellas",
+    emoji: "👗",
+    description: "Elige el outfit para cada Estrella",
+    gradient: "from-pink-300 to-fuchsia-400",
+  },
+  {
+    id: "belleza",
+    name: "Salón de Belleza",
+    emoji: "💇",
+    description: "Peina el cabello y pinta las uñitas",
+    gradient: "from-fuchsia-200 to-pink-300",
+  },
+  {
+    id: "baile",
+    name: "Baile y Música",
+    emoji: "💃",
+    description: "Sigue el paso y baila con Las Estrellas",
+    gradient: "from-purple-300 to-pink-400",
   },
 ];
