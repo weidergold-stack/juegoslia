@@ -92,7 +92,20 @@ export default function RaceGame({ world }: { world: World }) {
 
       {levelDone && !allDone && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6">
-          <div className="animate-pop-in flex flex-col items-center gap-4 rounded-[2.5rem] bg-white px-10 py-10 text-center shadow-2xl">
+          {["🎉", "⭐", "🏁", "✨"].map((emoji, i) => (
+            <span
+              key={i}
+              className="animate-float pointer-events-none absolute text-4xl"
+              style={{
+                left: `${(i * 61) % 100}%`,
+                top: `${(i * 43) % 100}%`,
+                animationDelay: `${(i % 4) * 0.25}s`,
+              }}
+            >
+              {emoji}
+            </span>
+          ))}
+          <div className="animate-pop-in relative z-10 flex flex-col items-center gap-4 rounded-[2.5rem] bg-white px-10 py-10 text-center shadow-2xl">
             <span className="text-6xl">🎉</span>
             <h2 className="text-3xl font-bold text-violet-700">
               ¡Nivel {levelIndex + 1} completado!

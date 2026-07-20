@@ -10,6 +10,8 @@ export type LevelTheme = {
   foliageColors: [string, string];
   trackLength: number;
   speed: number;
+  curveAmplitude: number;
+  curveWavelength: number;
   night?: boolean;
 };
 
@@ -26,6 +28,8 @@ export const LEVELS: LevelTheme[] = [
     foliageColors: ["#2f8f46", "#3aa657"],
     trackLength: 1050,
     speed: 26,
+    curveAmplitude: 2.2,
+    curveWavelength: 160,
   },
   {
     name: "Desierto Dorado",
@@ -39,6 +43,8 @@ export const LEVELS: LevelTheme[] = [
     foliageColors: ["#c98a3a", "#dba24f"],
     trackLength: 1300,
     speed: 29,
+    curveAmplitude: 2.8,
+    curveWavelength: 135,
   },
   {
     name: "Noche de Estrellas",
@@ -52,6 +58,8 @@ export const LEVELS: LevelTheme[] = [
     foliageColors: ["#1f5c38", "#245f3d"],
     trackLength: 1550,
     speed: 32,
+    curveAmplitude: 3.2,
+    curveWavelength: 115,
     night: true,
   },
 ];
