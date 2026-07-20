@@ -707,6 +707,10 @@ export default function RaceScene({
 
       let isBlocked = false;
       for (const rival of rivals) {
+        if (rival.mesh.position.z <= -TRACK_LENGTH) {
+          rival.wasBlocking = false;
+          continue;
+        }
         const rivalDx = Math.abs(car.position.x - rival.mesh.position.x);
         const rivalAhead = rival.mesh.position.z < car.position.z;
         if (rivalDx < COLLISION_X && rivalAhead) {
