@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { World } from "../../../lib/worlds";
 import GameTopBar from "../../../components/GameTopBar";
 import Celebration from "../../../components/Celebration";
 import { POSITIVE_PHRASES, speakRandom } from "../../../lib/speech";
+import { CARD_BACK_IMAGE, MEMORY_ICON_SETS } from "./icons";
 
 type Card = {
   key: string;
@@ -39,7 +41,7 @@ function MemoryBoard({
     // Client-only shuffle: must run post-mount so server and first client
     // render both show the loading placeholder (avoids hydration mismatch).
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setCards(buildDeck(world.memoryIcons));
+    setCards(buildDeck(MEMORY_ICON_SETS[world.id]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -90,13 +92,19 @@ function MemoryBoard({
             <button
               key={card.key}
               onClick={() => handleFlip(index)}
-              className={`aspect-square rounded-2xl text-4xl shadow-lg transition-transform duration-200 active:scale-90 sm:text-5xl ${
-                isFlipped
-                  ? "bg-white"
-                  : "bg-gradient-to-b from-violet-300 to-violet-500"
-              } ${card.matched ? "opacity-60" : ""}`}
+              className={`relative aspect-square overflow-hidden rounded-2xl shadow-lg transition-transform duration-200 active:scale-90 ${
+                card.matched ? "opacity-60" : ""
+              }`}
             >
-              {isFlipped ? card.icon : "❓"}
+              {isFlipped ? (
+                <div key={card.key + "-front"} className="animate-pop-in relative h-full w-full bg-white p-2">
+                  <Image src={card.icon} alt="" fill className="object-contain p-2" />
+                </div>
+              ) : (
+                <div className="relative h-full w-full">
+                  <Image src={CARD_BACK_IMAGE} alt="" fill className="object-cover" />
+                </div>
+              )}
             </button>
           );
         })}

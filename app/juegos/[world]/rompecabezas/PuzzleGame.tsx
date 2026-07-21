@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { World } from "../../../lib/worlds";
 import GameTopBar from "../../../components/GameTopBar";
 import Celebration from "../../../components/Celebration";
+import { ALT_PUZZLE_IMAGE } from "./pictures";
 
 function shuffledOrder(size: number): number[] {
   const arr = Array.from({ length: size * size }, (_, i) => i);
@@ -19,11 +20,11 @@ function shuffledOrder(size: number): number[] {
 }
 
 function PuzzleBoard({
-  world,
+  image,
   size,
   onWin,
 }: {
-  world: World;
+  image: string;
   size: number;
   onWin: () => void;
 }) {
@@ -83,7 +84,7 @@ function PuzzleBoard({
               selected === slot ? "ring-4 ring-yellow-300" : ""
             }`}
             style={{
-              backgroundImage: `url(${world.colorImage})`,
+              backgroundImage: `url(${image})`,
               backgroundSize: `${size * 100}% ${size * 100}%`,
               backgroundPosition: `${(col / (size - 1)) * 100}% ${
                 (row / (size - 1)) * 100
@@ -100,6 +101,9 @@ export default function PuzzleGame({ world }: { world: World }) {
   const [size, setSize] = useState(2);
   const [round, setRound] = useState(0);
   const [done, setDone] = useState(false);
+  const [pictureIndex, setPictureIndex] = useState(0);
+
+  const pictures = [world.colorImage, ALT_PUZZLE_IMAGE[world.id]];
 
   return (
     <main
@@ -131,9 +135,27 @@ export default function PuzzleGame({ world }: { world: World }) {
         ))}
       </div>
 
+      <div className="flex gap-3 rounded-full bg-white/80 p-1 shadow-md">
+        {pictures.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setPictureIndex(i);
+              setRound((r) => r + 1);
+              setDone(false);
+            }}
+            className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+              pictureIndex === i ? "bg-violet-600 text-white" : "text-violet-600"
+            }`}
+          >
+            Imagen {i + 1}
+          </button>
+        ))}
+      </div>
+
       <PuzzleBoard
-        key={`${size}-${round}`}
-        world={world}
+        key={`${size}-${pictureIndex}-${round}`}
+        image={pictures[pictureIndex]}
         size={size}
         onWin={() => setDone(true)}
       />

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { World } from "../../../lib/worlds";
 import GameTopBar from "../../../components/GameTopBar";
 import Celebration from "../../../components/Celebration";
+import { ALT_LINE_IMAGE } from "./pictures";
 
 const PALETTE = [
   "#ef4444",
@@ -78,6 +79,10 @@ export default function ColoringGame({ world }: { world: World }) {
   const [selected, setSelected] = useState(PALETTE[0]);
   const [ready, setReady] = useState(false);
   const [done, setDone] = useState(false);
+  const [pictureIndex, setPictureIndex] = useState(0);
+
+  const pictures = [world.lineImage, ALT_LINE_IMAGE[world.id]];
+  const currentPicture = pictures[pictureIndex];
 
   function drawOriginal() {
     const canvas = canvasRef.current;
@@ -90,14 +95,18 @@ export default function ColoringGame({ world }: { world: World }) {
   }
 
   useEffect(() => {
+    // Resetting UI state when switching pictures, not an SSR concern.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setReady(false);
+    setDone(false);
     const img = new window.Image();
-    img.src = world.lineImage;
+    img.src = currentPicture;
     img.onload = () => {
       imageRef.current = img;
       drawOriginal();
       setReady(true);
     };
-  }, [world.lineImage]);
+  }, [currentPicture]);
 
   function handlePaint(clientX: number, clientY: number) {
     const canvas = canvasRef.current;
@@ -121,6 +130,20 @@ export default function ColoringGame({ world }: { world: World }) {
       <p className="text-center text-xl font-semibold text-white drop-shadow">
         Elige un color y toca el dibujo para pintar
       </p>
+
+      <div className="flex gap-3 rounded-full bg-white/80 p-1 shadow-md">
+        {pictures.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setPictureIndex(i)}
+            className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+              pictureIndex === i ? "bg-violet-600 text-white" : "text-violet-600"
+            }`}
+          >
+            Dibujo {i + 1}
+          </button>
+        ))}
+      </div>
 
       <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-[2rem] bg-white shadow-xl">
         {!ready && (

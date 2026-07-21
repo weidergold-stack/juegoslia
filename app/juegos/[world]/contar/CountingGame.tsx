@@ -1,16 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { World } from "../../../lib/worlds";
 import GameTopBar from "../../../components/GameTopBar";
 import Celebration from "../../../components/Celebration";
 import { POSITIVE_PHRASES, TRY_AGAIN_PHRASES, speakRandom } from "../../../lib/speech";
+import { MEMORY_ICON_SETS } from "../memoria/icons";
 
 const TOTAL_ROUNDS = 5;
 
 type Round = {
   count: number;
   options: number[];
+  icon: string;
 };
 
 function shuffle<T>(arr: T[]): T[] {
@@ -22,14 +25,16 @@ function shuffle<T>(arr: T[]): T[] {
   return copy;
 }
 
-function makeRound(): Round {
+function makeRound(worldId: string): Round {
   const count = 1 + Math.floor(Math.random() * 8);
   const options = new Set<number>([count]);
   while (options.size < 3) {
     const candidate = count + Math.floor(Math.random() * 5) - 2;
     if (candidate >= 1 && candidate <= 10) options.add(candidate);
   }
-  return { count, options: shuffle([...options]) };
+  const icons = MEMORY_ICON_SETS[worldId];
+  const icon = icons[Math.floor(Math.random() * icons.length)];
+  return { count, options: shuffle([...options]), icon };
 }
 
 function CountingBoard({
@@ -47,8 +52,8 @@ function CountingBoard({
     // Client-only random round: must run post-mount so server and first
     // client render both show the loading placeholder (avoids hydration mismatch).
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setRound(makeRound());
-  }, []);
+    setRound(makeRound(world.id));
+  }, [world.id]);
 
   function handleChoose(n: number) {
     if (!round || feedback === "correct") return;
@@ -60,7 +65,7 @@ function CountingBoard({
           onFinish();
         } else {
           setProgress((p) => p + 1);
-          setRound(makeRound());
+          setRound(makeRound(world.id));
           setFeedback(null);
         }
       }, 700);
@@ -87,9 +92,9 @@ function CountingBoard({
 
       <div className="flex min-h-40 w-full max-w-md flex-wrap items-center justify-center gap-3 rounded-[2rem] bg-white/90 p-6 shadow-xl">
         {Array.from({ length: round.count }).map((_, i) => (
-          <span key={i} className="animate-pop-in text-5xl">
-            {world.countingIcon}
-          </span>
+          <div key={i} className="animate-pop-in relative h-12 w-12">
+            <Image src={round.icon} alt="" fill className="object-contain" />
+          </div>
         ))}
       </div>
 
