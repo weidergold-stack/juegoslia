@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { World } from "../../../lib/worlds";
 import { LevelTheme } from "./levels";
 import { createEngineSound } from "./engineSound";
@@ -271,6 +275,49 @@ function buildBoostTexture() {
   return new THREE.CanvasTexture(canvas);
 }
 
+function buildSkyTexture(topColor: string, horizonColor: string) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 2;
+  canvas.height = 512;
+  const ctx = canvas.getContext("2d")!;
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, topColor);
+  gradient.addColorStop(1, horizonColor);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function buildRampTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#fbbf24";
+  ctx.fillRect(0, 0, 64, 64);
+  ctx.strokeStyle = "#1f2937";
+  ctx.lineWidth = 11;
+  for (let i = -64; i < 128; i += 24) {
+    ctx.beginPath();
+    ctx.moveTo(i, 64);
+    ctx.lineTo(i + 64, 0);
+    ctx.stroke();
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(1, 2);
+  return tex;
+}
+
+function buildRampGeometry(width: number, length: number, height: number) {
+  const geo = new THREE.BoxGeometry(width, 0.3, length);
+  geo.translate(0, 0, -length / 2);
+  geo.rotateX(Math.atan2(height, length));
+  return geo;
+}
+
 function buildStarfield(spread: number, centerZ: number) {
   const count = 160;
   const positions = new Float32Array(count * 3);
@@ -335,7 +382,7 @@ export default function RaceScene({
     const curveOffset = makeCurveOffset(level.curveAmplitude, level.curveWavelength);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(level.sky);
+    scene.background = buildSkyTexture(level.sky, level.fogColor);
     scene.fog = new THREE.Fog(level.fogColor, 30, 170);
 
     const camera = new THREE.PerspectiveCamera(
@@ -351,7 +398,21 @@ export default function RaceScene({
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
     container.appendChild(renderer.domElement);
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(container.clientWidth, container.clientHeight),
+      0.55,
+      0.55,
+      0.82
+    );
+    composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
+    composer.setSize(container.clientWidth, container.clientHeight);
 
     const hemi = new THREE.HemisphereLight(level.hemiSky, level.hemiGround, 1.0);
     scene.add(hemi);
@@ -480,6 +541,24 @@ export default function RaceScene({
       boosts.push({ mesh, lane, z, used: false });
     }
 
+    const RAMP_COUNT = 2;
+    const RAMP_LENGTH = 4;
+    const RAMP_HEIGHT = 1.1;
+    const rampTex = buildRampTexture();
+    const rampMat = new THREE.MeshStandardMaterial({ map: rampTex, roughness: 0.7, metalness: 0.1 });
+    const rampGeo = buildRampGeometry(2.6, RAMP_LENGTH, RAMP_HEIGHT);
+    const RAMP_FRACTIONS = [0.35, 0.72];
+    const ramps: { mesh: THREE.Mesh; lane: number; z: number }[] = [];
+    for (let i = 0; i < RAMP_COUNT; i++) {
+      const lane = Math.floor(Math.random() * 3);
+      const z = -TRACK_LENGTH * RAMP_FRACTIONS[i];
+      const mesh = new THREE.Mesh(rampGeo, rampMat);
+      mesh.position.set(curveOffset(z) + LANES[lane], 0, z);
+      mesh.castShadow = true;
+      scene.add(mesh);
+      ramps.push({ mesh, lane, z });
+    }
+
     const finishX = curveOffset(-TRACK_LENGTH);
     const gatePoleMat = new THREE.MeshStandardMaterial({ color: "#e5e7eb" });
     for (const x of [-3.6, 3.6]) {
@@ -521,6 +600,7 @@ export default function RaceScene({
         wasBlocking: false,
         slowTimer: 0,
         boostTimer: 0,
+        jumpTimer: -1,
         wobblePhase: Math.random() * Math.PI * 2,
         wobbleFreq: 0.15 + Math.random() * 0.25,
       };
@@ -541,6 +621,8 @@ export default function RaceScene({
     let boostFlash = 0;
     let fovBoostAmount = 0;
     let steerX = 0;
+    let playerJumpTimer = -1;
+    const JUMP_DURATION = 0.9;
 
     const clock = new THREE.Clock();
     let finished = false;
@@ -564,6 +646,7 @@ export default function RaceScene({
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
+      composer.setSize(container.clientWidth, container.clientHeight);
     }
     window.addEventListener("resize", handleResize);
 
@@ -699,6 +782,47 @@ export default function RaceScene({
         }
       }
 
+      for (const ramp of ramps) {
+        const dz = Math.abs(ramp.z - car.position.z);
+        const dxr = Math.abs(ramp.mesh.position.x - car.position.x);
+        if (playerJumpTimer < 0 && dz < 1.4 && dxr < 1.3) {
+          playerJumpTimer = 0;
+          engineSound.collect();
+        }
+        for (const rival of rivals) {
+          const rdz = Math.abs(ramp.z - rival.mesh.position.z);
+          const rdxr = Math.abs(ramp.mesh.position.x - rival.mesh.position.x);
+          if (rival.jumpTimer < 0 && rdz < 1.4 && rdxr < 1.3) {
+            rival.jumpTimer = 0;
+          }
+        }
+      }
+
+      if (playerJumpTimer >= 0) {
+        playerJumpTimer += delta;
+        const t = Math.min(1, playerJumpTimer / JUMP_DURATION);
+        car.position.y = Math.sin(t * Math.PI) * RAMP_HEIGHT * 1.6;
+        car.rotation.x = -Math.sin(t * Math.PI) * 0.22;
+        if (t >= 1) {
+          playerJumpTimer = -1;
+          car.position.y = 0;
+          car.rotation.x = 0;
+        }
+      }
+
+      for (const rival of rivals) {
+        if (rival.jumpTimer < 0) continue;
+        rival.jumpTimer += delta;
+        const t = Math.min(1, rival.jumpTimer / JUMP_DURATION);
+        rival.mesh.position.y = Math.sin(t * Math.PI) * RAMP_HEIGHT * 1.6;
+        rival.mesh.rotation.x = -Math.sin(t * Math.PI) * 0.22;
+        if (t >= 1) {
+          rival.jumpTimer = -1;
+          rival.mesh.position.y = 0;
+          rival.mesh.rotation.x = 0;
+        }
+      }
+
       const dx = targetXRef.current - steerX;
       steerX += dx * Math.min(1, delta * 7);
       car.position.x = curveOffset(car.position.z) + steerX;
@@ -798,7 +922,7 @@ export default function RaceScene({
       frameId = requestAnimationFrame(animate);
       const delta = Math.min(clock.getDelta(), 0.05);
       updateFrame(delta);
-      renderer.render(scene, camera);
+      composer.render();
     }
     animate();
 
@@ -814,7 +938,10 @@ export default function RaceScene({
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", onPointerUp);
       container.removeChild(renderer.domElement);
+      bloomPass.dispose();
+      composer.dispose();
       renderer.dispose();
+      if (scene.background instanceof THREE.Texture) scene.background.dispose();
       scene.traverse((obj) => {
         if (obj instanceof THREE.Mesh) {
           obj.geometry.dispose();
